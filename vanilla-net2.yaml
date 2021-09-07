@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-in-net2
+  annotations:
+    mizar.com/vpc: vpc1 
+    mizar.com/subnet: net2 
+spec:
+  containers:
+  - name: vanilla-container
+    image: mizarnet/testpod:latest 
+  nodeName: ip-172-31-6-231 
