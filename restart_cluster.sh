@@ -40,5 +40,5 @@ ssh $slave2 "$joincmd"|tee $kubeadmjoinlog
 
 echo "-- installing mizar --"
 mizarlog=/tmp/mizar.out
-kubectl create -f mizar.dev.yaml|tee mizarlog
+kubectl create -f mizar.dev.yaml|tee $mizarlog
 
