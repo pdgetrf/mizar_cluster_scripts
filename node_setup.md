@@ -52,7 +52,7 @@ apt-mark hold kubelet kubeadm kubectl
 apt -y install docker.io
 ```
 
-#### edit /etc/docker/daemon.json to use systemd. ([ref](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker))
+#### create/configure /etc/docker/daemon.json to use systemd. ([ref](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker))
 
 ```bash
 sudo mkdir /etc/docker
