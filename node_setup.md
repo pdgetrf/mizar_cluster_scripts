@@ -2,6 +2,8 @@ this manual is used to set up test/dev nodes.
 
 ### !!DO NOT INSTALL OTHER CNI LIKE FLANNEL!!
 
+the follwing is to be run as **root**.
+
 ### clone mizar
 
 ```bash
@@ -33,21 +35,21 @@ sudo sysctl --system
 
 ### install kube stuff (ref from [this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl))
 ```
-sudo apt-get update
-sudo apt-get install -y apt-transport-https ca-certificates curl
+apt-get update
+apt-get install -y apt-transport-https ca-certificates curl
 
-sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 
 echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
-sudo apt-get update
-sudo apt-get install -y kubelet kubeadm kubectl
-sudo apt-mark hold kubelet kubeadm kubectl
+apt-get update
+apt-get install -y kubelet kubeadm kubectl
+apt-mark hold kubelet kubeadm kubectl
 ```
 
 ### install docker
 ```
-apt  install docker.io
+apt -y install docker.io
 ```
 
 #### edit /etc/docker/daemon.json to use systemd. It should look like this:
