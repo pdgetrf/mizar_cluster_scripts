@@ -67,7 +67,19 @@ cat <<EOF | sudo tee /etc/docker/daemon.json
 }
 EOF
 
-sudo systemctl enable docker
-sudo systemctl daemon-reload
-sudo systemctl restart docker
+systemctl enable docker
+systemctl daemon-reload
+systemctl restart docker
+```
+
+### create cni file
+```bash
+mkdir -p /etc/cni/net.d
+cat <<EOF | sudo tee /etc/cni/net.d/10-mizarcni.conf
+{
+	"cniVersion": "0.3.1",
+	"name": "mizarcni",
+	"type": "mizarcni"
+}
+EOF
 ```
