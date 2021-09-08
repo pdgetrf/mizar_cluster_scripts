@@ -25,3 +25,8 @@ This brings up a kubeadm cluster with slave nodes from the slave.in file, instal
 Here's an example of what it sets up:
 
 ![image](https://user-images.githubusercontent.com/252020/132430804-d0da365b-faa7-4569-a2cc-a3f0e783f537.png)
+
+And here's the usage and outputs:
+
+![image](https://user-images.githubusercontent.com/252020/132586722-27861eb3-a41d-4f76-849a-fc22b5b2b18a.png)
+
