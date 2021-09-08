@@ -1,8 +1,7 @@
-this manual is used to set up test/dev nodes.
+this manual is used to set up test/dev nodes. the follwing is to be run as **root**.
 
-### !!DO NOT INSTALL OTHER CNI LIKE FLANNEL!!
-
-the follwing is to be run as **root**.
+### prerequisites
+- DO NOT INSTALL OTHER CNI LIKE FLANNEL!!
 
 ### clone mizar
 
