@@ -19,7 +19,7 @@ cd mizar/
 reboot
 ```
 
-### iptables and swap off (ref from [this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#letting-iptables-see-bridged-traffic))
+### iptables and swap off ([ref](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#letting-iptables-see-bridged-traffic))
 ```bash
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
 br_netfilter
@@ -33,7 +33,7 @@ sudo sysctl --system
 ```
 
 
-### install kube stuff (ref from [this](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl))
+### install kube stuff ([ref](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl))
 ```
 apt-get update
 apt-get install -y apt-transport-https ca-certificates curl
@@ -52,9 +52,11 @@ apt-mark hold kubelet kubeadm kubectl
 apt -y install docker.io
 ```
 
-#### edit /etc/docker/daemon.json to use systemd. It should look like this:
-```
-root@ip-172-31-6-231:/home/ubuntu# cat /etc/docker/daemon.json
+#### edit /etc/docker/daemon.json to use systemd. ([ref](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#docker))
+
+```bash
+sudo mkdir /etc/docker
+cat <<EOF | sudo tee /etc/docker/daemon.json
 {
   "exec-opts": ["native.cgroupdriver=systemd"],
   "log-driver": "json-file",
@@ -63,10 +65,9 @@ root@ip-172-31-6-231:/home/ubuntu# cat /etc/docker/daemon.json
   },
   "storage-driver": "overlay2"
 }
-```
+EOF
 
-#### reload daemon
-```bash
-systemctl daemon-reload
-systemctl restart docker
+sudo systemctl enable docker
+sudo systemctl daemon-reload
+sudo systemctl restart docker
 ```
