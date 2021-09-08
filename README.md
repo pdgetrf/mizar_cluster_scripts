@@ -18,7 +18,7 @@ root@ip-172-31-7-100:~/testing# cat slaves.in
 ./mizar_cluster_up.sh
 ```
 
-And that's it. No, really!
+And that's it. No, really! It takes care of making sure proper cleaning up is done, the correct VNI is used and all those tedious jazz.
 
 This brings up a kubeadm cluster with slave nodes from the slave.in file, install Mizar, provision a new vpc with 2 subnets (using the correct CNI)
 
