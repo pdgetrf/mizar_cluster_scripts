@@ -84,4 +84,11 @@ cat <<EOF | sudo tee /etc/cni/net.d/10-mizarcni.conf
 EOF
 ```
 
+### bash export
+add
+```bash
+export KUBECONFIG=/etc/kubernetes/admin.conf
+```
+to ~/.bashrc (again, this should be in the root account)
+
 ### do another reboot
