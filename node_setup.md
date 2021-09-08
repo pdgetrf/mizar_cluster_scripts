@@ -83,3 +83,5 @@ cat <<EOF | sudo tee /etc/cni/net.d/10-mizarcni.conf
 }
 EOF
 ```
+
+### do another reboot
