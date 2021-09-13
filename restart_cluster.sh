@@ -56,7 +56,7 @@ done < "$slavehosts"
 wait 
 
 echo ">> installing mizar"
-kubectl create -f mizar.dev.yaml > $mizarlog 2>&1
+kubectl create -f mizar.goose.yaml > $mizarlog 2>&1
 
 echo ">> verifying vpc0 is provisioned"
 vpc0=""
