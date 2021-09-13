@@ -20,10 +20,10 @@ fi
 rm -f /tmp/*.out
 
 nuke_slave(){
-   slave=$1
-   ssh -n $slave "kubeadm reset -f" > $kubeadmresetlog 2>&1 
-   scp ./cleanup.sh $slave:/tmp > $cleanuplog 2>&1
-   ssh -n $slave "/tmp/cleanup.sh" >> $cleanuplog 2>&1
+    slave=$1
+    ssh -n $slave "kubeadm reset -f" > $kubeadmresetlog 2>&1 
+    scp ./cleanup.sh $slave:/tmp > $cleanuplog 2>&1
+    ssh -n $slave "/tmp/cleanup.sh" >> $cleanuplog 2>&1
 }
 
 echo ">> resetting and cleaning up slave nodes (in parallel)"
