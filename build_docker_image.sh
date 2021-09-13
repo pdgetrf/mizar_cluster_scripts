@@ -95,9 +95,10 @@ slave_reload_fn(){
 send_and_reload(){
     slave=$1
     echo ">>>> reloading images on slave $slave"
-
+ 
+    ssh $slave "rm -f *.tar.gz"
     scp *.tar.gz $slave:~ >> $buildlog 2>&1
-    mv *.tar.gz /tmp >> $buildlog 2>&1
+    rm -f *.tar.gz >> $buildlog 2>&1
     ssh $slave "$(typeset -f slave_reload_fn); slave_reload_fn $tag"
 }
 

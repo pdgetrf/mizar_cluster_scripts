@@ -493,6 +493,7 @@ spec:
       initContainers:
       - name: node-init
         image: vmizarnet/mizar:goose
+        imagePullPolicy: Never
         command: [./node-init.sh]
         securityContext:
           privileged: true
@@ -501,6 +502,7 @@ spec:
           mountPath: /home
       containers:
       - name: mizar-daemon
+        imagePullPolicy: Never
         image: vmizarnet/dropletd:goose
         env:
         - name: FEATUREGATE_BWQOS
@@ -538,6 +540,7 @@ spec:
       containers:
       - name: mizar-operator
         image: vmizarnet/endpointopr:goose
+        imagePullPolicy: Never
         env:
         - name: FEATUREGATE_BWQOS
           value: 'false'
