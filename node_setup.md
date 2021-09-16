@@ -91,4 +91,12 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
 to ~/.bashrc (again, this should be in the root account)
 
+### install python and mizar dependencies (NOTE: this is not fully tested yet)
+```
+apt-get install -y sudo rpcbind rsyslog libelf-dev iproute2  net-tools iputils-ping bridge-utils ethtool curl python$pyversion lcov python$pyversion-dev python3-apt python3-testresources libcmocka-dev python3-pip
+pip3 install kopf
+apt install libcmocka-dev
+pip3 install --ignore-installed /var/mizar/
+```
+
 ### do another reboot
