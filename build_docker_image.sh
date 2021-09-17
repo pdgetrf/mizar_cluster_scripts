@@ -98,7 +98,6 @@ send_and_reload(){
  
     ssh $slave "rm -f *.tar.gz"
     scp *.tar.gz $slave:~ >> $buildlog 2>&1
-    rm -f *.tar.gz >> $buildlog 2>&1
     ssh $slave "$(typeset -f slave_reload_fn); slave_reload_fn $tag"
 }
 
@@ -108,6 +107,7 @@ distribute_and_reload_images(){
 	send_and_reload $slave &
     done < "$slavehosts"
     wait
+    rm -f *.tar.gz >> $buildlog 2>&1
 }
 
 echo ">> verifying slave host file exist"

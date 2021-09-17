@@ -33,16 +33,17 @@ do
   sleep 1
   vni=$(kubectl get vpc vpc1|grep vpc1|awk '{print $4}')
 done
+sleep 5 
 
 #
 # replace with the right VNI
 #
 echo ">> setting VNI to $vni for subnets"
 cat test_net1.yaml.template|sed "s/VPC_VNI/$vni/" > net1.yaml 
-cat test_net2.yaml.template|sed "s/VPC_VNI/$vni/" > net2.yaml 
+#cat test_net2.yaml.template|sed "s/VPC_VNI/$vni/" > net2.yaml 
 
 #
 # create subnets
 #
 kubectl create -f ./net1.yaml 
-kubectl create -f ./net2.yaml 
+#kubectl create -f ./net2.yaml 
