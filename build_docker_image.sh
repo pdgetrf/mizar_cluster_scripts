@@ -80,7 +80,7 @@ slave_reload_fn(){
     tag=$1
 
     # clean up dangling docker images
-    docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+    docker rmi $(docker images --filter "dangling=true" -q --no-trunc) >> $slavereloadlog 2>&1
 
     gzip -d *.gz >> $slavereloadlog 2>&1
 
