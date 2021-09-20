@@ -70,3 +70,7 @@ do
 done
 
 echo "ALL DONE! YEEHAW!!"
+
+echo ">>> sharing config with ubuntu"
+cp /etc/kubernetes/admin.conf /home/ubuntu
+chown ubuntu:ubuntu /home/ubuntu/admin.conf

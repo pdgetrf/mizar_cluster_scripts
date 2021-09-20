@@ -10,7 +10,7 @@ net0=`kubectl get subnet net0|awk '{print $6}'`
 while [[ "$vpc0" != *"Provisioned"* || "$net0" != *"Provisioned"* ]]
 do
   echo ">> waiting 5 seconds for vpc0 to be provisioned"
-  sleep 5 
+  sleep  10 
   vpc0=`kubectl get vpc vpc0|awk '{print $6}'`
   net0=`kubectl get subnet net0|awk '{print $6}'`
 done
