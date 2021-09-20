@@ -77,11 +77,33 @@ systemctl restart docker
 mkdir -p /etc/cni/net.d
 cat <<EOF | sudo tee /etc/cni/net.d/10-mizarcni.conf
 {
-	"cniVersion": "0.3.1",
-	"name": "mizarcni",
-	"type": "mizarcni"
+        "cniVersion": "0.3.1",
+        "name": "mizarcni",
+        "type": "mizarcni"
 }
 EOF
+```
+
+### install python and mizar dependencies
+```bash
+apt-get install -y sudo rpcbind rsyslog libelf-dev iproute2  net-tools iputils-ping bridge-utils ethtool curl python$pyversion lcov python$pyversion-dev python3-apt python3-testresources libcmocka-dev python3-pip
+pip3 install kopf # may fail but okay
+apt install libcmocka-dev
+```
+
+### hacky steps to set up cni on a host
+1. start the kubeadm cluster as usual, and join the new node to the cluster. **it's okay the node is in NotReady state**
+2. install mizar.goose.yaml using kubectl. this will deploy a daemonset pod on the new node. this pod installs some needed software in */var/mizar*
+3. on the new node, run
+```bash
+pip3 install --ignore-installed /var/mizar/
+```
+this will take some time (especially on step "Running setup.py bdist_wheel for grpcio ..."). not entirely sure what's being compiled and installed, but after this, node should be in Ready state.
+
+### on the node where mizar is compiled, most likely the master node, install dev tools
+```bash
+apt-get install -y build-essential clang-7 llvm-7 libelf-dev python3.8 python3-pip libcmocka-dev lcov python3.8-dev python3-apt pkg-config
+python3 -m pip install --user grpcio-tools
 ```
 
 ### bash export
@@ -89,14 +111,4 @@ add
 ```bash
 export KUBECONFIG=/etc/kubernetes/admin.conf
 ```
-to ~/.bashrc (again, this should be in the root account)
-
-### install python and mizar dependencies (NOTE: this is not fully tested yet)
-```
-apt-get install -y sudo rpcbind rsyslog libelf-dev iproute2  net-tools iputils-ping bridge-utils ethtool curl python$pyversion lcov python$pyversion-dev python3-apt python3-testresources libcmocka-dev python3-pip
-pip3 install kopf
-apt install libcmocka-dev
-pip3 install --ignore-installed /var/mizar/
-```
-
-### do another reboot
+to ~/.bashrc on the master node (again, this should be in the root account)
