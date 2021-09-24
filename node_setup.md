@@ -84,12 +84,26 @@ cat <<EOF | sudo tee /etc/cni/net.d/10-mizarcni.conf
 EOF
 ```
 
-### install python and mizar dependencies
+### compiling Mizar
+on the host where mizar is to be compiled, do the following:
+
+#### install python and mizar dependencies
 ```bash
 apt-get install -y sudo rpcbind rsyslog libelf-dev iproute2  net-tools iputils-ping bridge-utils ethtool curl python$pyversion lcov python$pyversion-dev python3-apt python3-testresources libcmocka-dev python3-pip
 pip3 install kopf # may fail but okay
 apt install libcmocka-dev
 ```
+
+#### go to this commit
+
+```
+commit eb839b06f6a92e479d4e64e3eef5d5a609595753 (origin/dev-next, origin/HEAD)
+Author: Phu Tran <22720475+phudtran@users.noreply.github.com>
+Date:   Mon Sep 13 13:50:50 2021 -0700
+
+    Add dev deploy yaml (#536)
+```
+This is a "recent enough" commit for edge. Commits later than this seems to have new compiling dependency which I didn't find time to figure out.  
 
 ### hacky steps to set up cni on a host
 1. start the kubeadm cluster as usual, and join the new node to the cluster. **it's okay the node is in NotReady state**
