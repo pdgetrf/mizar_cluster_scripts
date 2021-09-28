@@ -1,8 +1,11 @@
-### This repo is to help setup a cluster and run Mizar
+This repo is to help setup the dev environment for edge networking. 
 
+Roughly there are two ways to use. 
+
+### Start or restart the cluster
 To set up a node (master or slave), follow [the node setup guide](https://github.com/pdgetrf/mizar_cluster_scripts/blob/main/node_setup.md).
 
-To start a kubeadm cluster:
+To setup a kubeadm cluster:
 
 - make sure you can ssh from master to all slave hosts without password. follow [this](http://www.linuxproblem.org/art_9.html) if not. 
 - put IPs of slave hosts in a file called **slave.in**. for example:
@@ -30,7 +33,7 @@ And here's the usage and outputs:
 
 ![image](https://user-images.githubusercontent.com/252020/132586722-27861eb3-a41d-4f76-849a-fc22b5b2b18a.png)
 
-### run with indivisual scripts 
+### Run with indivisual scripts 
 Alternatively, one could use the following scripts for the task of
 
 1. rebuild the images and then update on all slave hosts
@@ -41,3 +44,10 @@ Alternatively, one could use the following scripts for the task of
 ```bash
 ./build_docker_image.sh && ./restart_cluster.sh && ./create_vpc_nets.sh && ./create_pods.sh
 ```
+
+### Pings
+
+Two scripts are provided to initiate pings.
+
+1. ping_122.sh, this pings the pod in the .122 subnet from the pod in the .0 subnet
+2. ping_0.sh, you guessed it! this pings the pod in the .0 subnet from the pod in the .122 subnet
