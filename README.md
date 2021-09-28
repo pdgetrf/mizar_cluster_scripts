@@ -30,3 +30,14 @@ And here's the usage and outputs:
 
 ![image](https://user-images.githubusercontent.com/252020/132586722-27861eb3-a41d-4f76-849a-fc22b5b2b18a.png)
 
+### run with indivisual scripts 
+Alternatively, one could use the following scripts for the task of
+
+1. rebuild the images and then update on all slave hosts
+2. restart the cluster
+3. create the 192.168.0.0/16 vpc and two subnets (192.168.0.0/24 and 192.168.122.0/24)
+4. create one pod in each of the two subnets
+
+```bash
+./build_docker_image.sh && ./restart_cluster.sh && ./create_vpc_nets.sh && ./create_pods.sh
+```
