@@ -14,7 +14,12 @@ root@ip-172-31-7-100:~/testing# cat slaves.in
 18.237.157.249
 18.237.205.30
 ```
-
+- update the install/config.json in the edge_gateway directory using the portal/gatewayinternal ip address
+```bash
+{
+        "portal_host": "172.31.4.20"
+}
+```
 - log into the master node and run
 
 ```bash
