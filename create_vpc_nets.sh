@@ -1,4 +1,5 @@
 #!/bin/bash
+source common.lib
 
 set -e
 
@@ -15,7 +16,10 @@ do
   net0=`kubectl get subnet net0|awk '{print $6}'`
 done
 
-portal_host_ip="$(cat ./portal_host.properties)"
+portalhost_filename=portal_host.properties
+exitIfFileNotExist ${portalhost_filename}
+
+portal_host_ip="$(cat ${portalhost_filename})"
 
 # Remove the old configmap file
 rm -f portal_host_configmap.yaml

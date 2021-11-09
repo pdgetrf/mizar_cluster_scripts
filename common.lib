@@ -1,0 +1,9 @@
+# The function will exit if the file does not exit
+exitIfFileNotExist() {
+   if [ ! -f $1 ]; then
+       echo "$1 does not exist. Please set up the file. Otherwise it will exit."
+       echo "Exiting..."
+       exit
+   fi
+}
+

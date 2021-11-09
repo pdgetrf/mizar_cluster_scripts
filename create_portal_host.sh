@@ -1,8 +1,11 @@
 #!/bin/bash
 
-portal_host_ip="$(cat ./portal_host.properties)"
+source common.lib
 
-echo $portal_host_ip
+portalhost_filename=portal_host.properties
+exitIfFileNotExist ${portalhost_filename}
+
+portal_host_ip="$(cat ${portalhost_filename})"
 
 # Remove the old configmap file
 rm -f portal_host_configmap.yaml
