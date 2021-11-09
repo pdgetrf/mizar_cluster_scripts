@@ -9,3 +9,4 @@ spec:
   prefix: "24"
   status: "Init"
   bouncers: 1
+  external: True

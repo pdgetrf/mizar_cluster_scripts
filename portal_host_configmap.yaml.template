@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: portal-host-config
+  namespace: default
+data:
+  portal_host_ip: PORTAL_HOST

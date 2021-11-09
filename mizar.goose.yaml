@@ -367,6 +367,11 @@ spec:
           priority: 0
           jsonPath: .spec.status
           description: The Current Provisioning Status of the net
+        - name: External
+          type: boolean
+          priority: 0
+          jsonPath: .spec.external
+          description: The flag shows that the subnet belongs to an external cluster
         - name: Bouncers
           type: integer
           priority: 0
