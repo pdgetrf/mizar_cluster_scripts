@@ -24,6 +24,7 @@ kind: Vpc
 metadata:
   name: vpc1
 spec:
+  vni: 2
   ip: "192.168.0.0"
   prefix: "16"
   status: "Init"
