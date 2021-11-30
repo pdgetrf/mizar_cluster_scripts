@@ -48,3 +48,5 @@ EOF
 
 apt-get install -y build-essential clang-7 llvm-7 libelf-dev python3.8 python3-pip libcmocka-dev lcov python3.8-dev python3-apt pkg-config
 python3 -m pip install --user grpcio-tools
+
+sh ./install_go.sh
