@@ -48,3 +48,5 @@ cat <<EOF | sudo tee /etc/cni/net.d/10-mizarcni.conf
         "type": "mizarcni"
 }
 EOF
+
+sh ./install_python.sh

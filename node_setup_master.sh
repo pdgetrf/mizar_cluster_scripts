@@ -50,3 +50,4 @@ apt-get install -y build-essential clang-7 llvm-7 libelf-dev python3.8 python3-p
 python3 -m pip install --user grpcio-tools
 
 sh ./install_go.sh
+sh ./install_python.sh
