@@ -9,3 +9,5 @@ spec:
   prefix: "24"
   status: "Init"
   bouncers: 1
+  # uncomment the following line if this subnet is remote
+  #virtual: true
