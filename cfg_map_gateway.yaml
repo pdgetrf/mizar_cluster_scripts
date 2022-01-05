@@ -1,0 +1,6 @@
+kind: ConfigMap 
+apiVersion: v1 
+metadata:
+  name: cluster-gateway-config
+data:
+  gateway_host_ip: 172.31.2.217

@@ -55,6 +55,9 @@ do
 done < "$slavehosts"
 wait 
 
+echo ">> installing gateway configmap"
+kubectl create -f cfg_map_gateway.yaml
+
 echo ">> installing mizar"
 kubectl create -f mizar.goose.yaml > $mizarlog 2>&1
 
